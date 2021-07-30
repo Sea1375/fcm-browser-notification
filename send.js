@@ -82,11 +82,14 @@ $(() => {
         }
 
         subscribers.forEach(item => {
+            let name = item.name;
+            notifyBody = notifyBody.replaceAll("{{firstname}}", name);
             sendSMS(item.subscriberId, notifyBody);
         })
     })
 
     function sendSMS(token, notifyBody) {
+        console.log(notifyBody);
         var smsData = {
             to: token,
             notification: {
